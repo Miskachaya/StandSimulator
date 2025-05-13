@@ -15,7 +15,7 @@ namespace StandSimulator
             {
                 
                 //Thread.Sleep(1000);
-                using (var connection = new SQLiteConnection("Data Source=C:\\workspace\\Stand.db"))
+                using (var connection = new SQLiteConnection("Data Source=C:\\Users\\maksb\\source\\repos\\Miskachaya\\API\\API\\Stand.db"))
                 {
                     connection.Open();
                     InsertCommand(connection,r);
@@ -57,10 +57,10 @@ namespace StandSimulator
         #region insert
         public static void InsertCommand(SQLiteConnection connection, Random r)
         {
-            for (int i = 1; i <= 4; i++)
+            for (int i = 1; i <= 6; i++)
             {
-                Thread.Sleep(r.Next(100,250));
-                string query = $"insert into ParametersMeasure (BlockID,VoltageValue,ActiveLoadPower,ReactiveLoadPower,FullLoadPower, Time) values ({i}, {GetRandom(r, 100, 200)},{GetRandom(r, 100, 200)},{GetRandom(r, 100, 200)},{GetRandom(r, 100, 200)}, '{DateTime.Now.ToString("HH.mm.ss.ffff")}')";
+                Thread.Sleep(r.Next(100,200));
+                string query = $"insert into ParametersMeasure (BlockID,VoltageValue,ActiveLoadPower,ReactiveLoadPower,FullLoadPower, Time) values ({i}, {GetRandom(r,180, 240)},{GetRandom(r, 40, 80)},{GetRandom(r, 10, 110)},{GetRandom(r, 30, 130)}, '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}')";
             // Создаем команду
                 using (SQLiteCommand command = new SQLiteCommand(query, connection))
                 {
